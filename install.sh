@@ -38,14 +38,14 @@ sudo locale-gen "en_US.UTF-8"
 # Remove old vhosts
 sudo rm /etc/apache2/sites-enabled/*
 
-# Create the vhosts
+# Create vhosts
 echo "
 <VirtualHost *:80>
 
 ServerAdmin webmaster@localhost
-DocumentRoot /var/www/lengow_corporation/web
-ServerName lengow.dev
-ServerAlias lengow.dev
+DocumentRoot /var/www/dashboard
+ServerName dashboard.dev
+ServerAlias dashboard.dev
 
 <Directory /var/www/lengow_corporation/web>
   Options Indexes FollowSymLinks MultiViews
@@ -54,74 +54,11 @@ ServerAlias lengow.dev
   allow from all
 </Directory>
 
-ErrorLog \${APACHE_LOG_DIR}/corp_error.log
-CustomLog \${APACHE_LOG_DIR}/corp_access.log combined
+ErrorLog \${APACHE_LOG_DIR}/dashboard_error.log
+CustomLog \${APACHE_LOG_DIR}/dashboard_access.log combined
 
-</VirtualHost>" > /etc/apache2/sites-available/corp.conf
-
-sudo echo "
-<VirtualHost *:80>
-
-ServerAdmin webmaster@localhost
-DocumentRoot /var/www/lengow-blog
-ServerName blog.lengow.dev
-ServerAlias blog.lengow.dev
-
-<Directory /var/www/lengow-blog>
-  Options Indexes FollowSymLinks MultiViews
-  AllowOverride All
-  Order allow,deny
-  allow from all
-</Directory>
-
-ErrorLog \${APACHE_LOG_DIR}/blog_error.log
-CustomLog \${APACHE_LOG_DIR}/blog_access.log combined
-
-</VirtualHost>" > /etc/apache2/sites-available/blog.conf
-
-sudo echo "
-<VirtualHost *:80>
-
-ServerAdmin webmaster@localhost
-DocumentRoot /var/www/lengow_hub2
-ServerName hub.lengow.dev
-ServerAlias hub.lengow.dev
-
-<Directory /var/www/lengow_hub2>
-  Options Indexes FollowSymLinks MultiViews
-  AllowOverride All
-  Order allow,deny
-  allow from all
-</Directory>
-
-ErrorLog \${APACHE_LOG_DIR}/hub_error.log
-CustomLog \${APACHE_LOG_DIR}/hub_access.log combined
-
-</VirtualHost>" > /etc/apache2/sites-available/hub.conf
-
-sudo echo "
-<VirtualHost *:80>
-
-ServerAdmin webmaster@localhost
-DocumentRoot /var/www/lengow_led
-ServerName led.dev
-ServerAlias led.dev
-
-<Directory /var/www/lengow_led>
-  Options Indexes FollowSymLinks MultiViews
-  AllowOverride All
-  Order allow,deny
-  allow from all
-</Directory>
-
-ErrorLog \${APACHE_LOG_DIR}/led_error.log
-CustomLog \${APACHE_LOG_DIR}/led_access.log combined
-
-</VirtualHost>" > /etc/apache2/sites-available/led.conf
+</VirtualHost>" > /etc/apache2/sites-available/dashboard.conf
 
 # Enable the sites
-sudo a2ensite corp.conf
-sudo a2ensite blog.conf
-sudo a2ensite hub.conf
-sudo a2ensite led.conf
+sudo a2ensite dashboard.conf
 sudo service apache2 reload
