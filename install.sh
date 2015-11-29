@@ -8,6 +8,7 @@ sudo apt-get install -y php5 apache2 libapache2-mod-php5 php5-curl php5-gd php5-
 
 # Configure xdebug
 cat << EOF | sudo tee -a /etc/php5/mods-available/xdebug.ini
+
 # Enable scream if you want to have full error reporting
 xdebug.scream=0
 xdebug.cli_color=1
@@ -32,13 +33,17 @@ sudo mv composer.phar /usr/local/bin/composer
 sudo apt-get install -y zsh
 
 # Set the lang and locale
+# This MAY NOT WORK, if it doesnt copy and paste those commands
+# in a vagrant ssh session
 sudo apt-get install -y language-pack-en
 sudo locale-gen "en_US.UTF-8"
 
-# Remove old vhosts
+# Delete enabled sites
+# This allows you regenerate your vhosts with a simple vagrant provision
 sudo rm /etc/apache2/sites-enabled/*
 
-# Create vhosts
+# Provision vhosts
+# You can add more by copy pasting and editing to your needs
 echo "
 <VirtualHost *:80>
 
@@ -60,5 +65,6 @@ CustomLog \${APACHE_LOG_DIR}/dashboard_access.log combined
 </VirtualHost>" > /etc/apache2/sites-available/dashboard.conf
 
 # Enable the sites
+# Add your own entries here for each vhosts you add in the install script
 sudo a2ensite dashboard.conf
 sudo service apache2 reload

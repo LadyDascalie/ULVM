@@ -1,0 +1,29 @@
+body {
+  background-color: #f2f2f2;
+}
+.top-pad {
+  padding-top: 30px;
+}
+.bottom-pad {
+  padding-bottom: 30px;
+}
+
+.fi-heart {
+  color: #D82753;
+}
+
+.sticky-footer {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translatex(-50%);
+}
+
+.bgi {
+  background-image: url(../img/bg.jpg);
+  
+}
+
+caption {
+  background-color: rgba(128, 128, 128, 0.25);
+}
