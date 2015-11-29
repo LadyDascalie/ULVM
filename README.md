@@ -1,4 +1,4 @@
-# ULSV - Unfancy LAMP Stack VM
+# ULVM - Unfancy LAMP VM
 ## What problem does it solve ?
 It provides a purposefully simple, easily configurable and lightweight VM for LAMP stack development
 ## What do you get ?
