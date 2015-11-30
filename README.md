@@ -31,3 +31,7 @@ While this is going, add the following entry to your `hosts` file:
 ```
 
 Once `vagrant up` has finishes, please visit `dashboard.dev` in your browser to confirm a working installation as well as finding additional documentation.
+
+## What else is coming ?
+
+**Mailcatcher:** I am planning on having `install.sh` provision and configure Mailcatcher by default.
