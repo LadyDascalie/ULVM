@@ -11,14 +11,14 @@
   <div class="row text-center top-pad">
 
     <h1 class="success bottom-pad">Dashboard</h1>
-    <a href="adminer.php"class="large button top-pad">Go to <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover='false' tabindex=3 title="Adminer is a super lightweight alternative to PhpMyAdmin to administer databases">Adminer</span></a>
-    
-    <a href="phpinfo.php" class="large button top-pad">Go to <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover='false' tabindex=3 title="Phpinfo lets you see what your current php configuration is">PHPInfo</span></a>
+    <a href="adminer.php"class="large button">Go to <span data-tooltip aria-haspopup="true" class="has-tip left" data-disable-hover='false' tabindex=3 title="Adminer is a super lightweight alternative to PhpMyAdmin">Adminer</span></a>
+
+    <a href="phpinfo.php" class="large button">Go to <span data-tooltip aria-haspopup="true" class="has-tip right" data-disable-hover='false' tabindex=3 title="Phpinfo lets you see what your current PHP configuration is">PHPInfo</span></a>
   </div>
   <hr>
-  <div class="row text-center top-pad">
-    <div class="callout warning small-12 columns">
-    <h4 class="bottom-pad">Instructions</h4>
+  <div class="row top-pad">
+    <div class="small-10 small-centered columns callout">
+      <h4 class="bottom-pad text-center">Instructions</h4>
       Please clone your repos into the <code>src</code> folder.
       In order to add new vhosts, please follow this procedure:<br><br>
       <ul class="small-6 columns small-centered text-left">
@@ -30,7 +30,9 @@
       You can also of course create your own vhosts manually inside the VM, but be aware that running <code>vagrant provision</code> without having them sourced in <code>install.sh</code> <strong>will</strong> delete them.<br>
       <br>Please remember to add your vhosts to your host's machine <code>/etc/hosts</code> file.<br>
     </div>
-    <table class="hover small-12 columns">
+  </div>
+  <div class="row">
+    <table class="small-10 small-centered columns text-center">
       <caption>Credentials and Documentation</caption>
       <thead>
         <tr>
@@ -58,19 +60,21 @@
         <tr>
           <td><strong>host: </strong><code>127.0.0.1</code></td>
           <td><strong>host: </strong><code>127.0.0.1</code></td>
-          <td></td>
+          <td><a target="_blank" href="//php.net/">PHP</a></td>
         </tr>
       </tbody>
     </table>
   </div>
-  <div class="row text-center top-pad">
-    <div class="subheader callout small-4 columns small-centered">Made by Benjamin Cable with <i class="fi-heart"></i><br>
-      Need help ? <a href="//github.com/ladydascalie">Find me on Github <i class="fi-social-github"></i></a>
-    </div>
+</div>
+<div class="row text-center top-pad">
+  <div class="subheader callout small-4 columns small-centered">
+    Need help ? <a target="_blank" href="//github.com/ladydascalie">Find me on Github <i class="fi-social-github"></i></a><br>Contributions welcome!
+  </div>
+  <div class="">
+    Made by Benjamin Cable with <i class="fi-heart"></i>
   </div>
 </body>
 <script src="js/vendor/jquery.min.js"></script>
 <script src="js/foundation.min.js"></script>
 <script src="js/app.js"></script>
 </html>
-

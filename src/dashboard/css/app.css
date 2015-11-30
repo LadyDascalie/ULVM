@@ -1,6 +1,3 @@
-body {
-  background-color: #f2f2f2;
-}
 .top-pad {
   padding-top: 30px;
 }
@@ -21,9 +18,10 @@ body {
 
 .bgi {
   background-image: url(../img/bg.jpg);
-  
+
 }
 
 caption {
-  background-color: rgba(128, 128, 128, 0.25);
+  background-color: #2199E8;
+  color: #fff;
 }
