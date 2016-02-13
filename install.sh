@@ -52,7 +52,7 @@ DocumentRoot /var/www/dashboard
 ServerName dashboard.dev
 ServerAlias dashboard.dev
 
-<Directory /var/www/lengow_corporation/web>
+<Directory /var/www/dashboard/web>
   Options Indexes FollowSymLinks MultiViews
   AllowOverride All
   Order allow,deny
