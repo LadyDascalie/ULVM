@@ -64,7 +64,31 @@ CustomLog \${APACHE_LOG_DIR}/dashboard_access.log combined
 
 </VirtualHost>" > /etc/apache2/sites-available/dashboard.conf
 
+echo "
+<VirtualHost *:80>
+
+ServerAdmin webmaster@localhost
+DocumentRoot /var/www/as-api
+ServerName asapi.dev
+ServerAlias asapi.dev
+
+<Directory /var/www/as-api>
+  Options Indexes FollowSymLinks MultiViews
+  AllowOverride All
+  Order allow,deny
+  allow from all
+</Directory>
+
+ErrorLog \${APACHE_LOG_DIR}/asapi_error.log
+CustomLog \${APACHE_LOG_DIR}/asapi_access.log combined
+
+</VirtualHost>" > /etc/apache2/sites-available/asapi.conf
 # Enable the sites
 # Add your own entries here for each vhosts you add in the install script
 sudo a2ensite dashboard.conf
+sudo a2ensite asapi.conf
+sudo service apache2 reload
+
+# Enable additional modules if necessary
+sudo a2enmod headers
 sudo service apache2 reload
