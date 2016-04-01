@@ -9,8 +9,8 @@ sudo apt-get install -y php5 apache2 libapache2-mod-php5 php5-curl php5-gd php5-
 # Configure xdebug
 cat << EOF | sudo tee -a /etc/php5/mods-available/xdebug.ini
 
-# Enable scream if you want to have full error reporting
-xdebug.scream=0
+# Disable scream if the error reporting gets too much
+xdebug.scream=1
 xdebug.cli_color=1
 xdebug.show_local_vars=1
 EOF
