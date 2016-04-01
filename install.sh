@@ -31,6 +31,12 @@ sudo mv composer.phar /usr/local/bin/composer
 # Install zsh
 # this gives you the option of installing zsh frameworks
 sudo apt-get install -y zsh
+# Doesn't matter since it's vagrant
+echo "vagrant" | sudo chsh -s $(which zsh)
+# Also do it for the super user
+sudo su
+echo "vagrant" | sudo chsh -s $(which zsh)
+exit
 
 # Set the lang and locale
 # This MAY NOT WORK, if it doesnt copy and paste those commands
@@ -41,6 +47,52 @@ sudo locale-gen "en_US.UTF-8"
 # Delete enabled sites
 # This allows you regenerate your vhosts with a simple vagrant provision
 sudo rm /etc/apache2/sites-enabled/*
+
+# Provision the default .vimrc
+echo '
+set nocompatible                " choose no compatibility with legacy vi
+syntax enable
+set encoding=utf-8
+filetype plugin indent on       " load file type plugins + indentation
+
+"" Tweaks
+set hidden                      " allow backgrounding buffers without writing them
+set number                      " line numbers are needed
+set rnu                         " if possible use relative
+set scrolloff=3                 " have some context around the current line always on screen
+set history=200                 " remember more Ex commands
+set synmaxcol=800               " do not try to highlight long lines
+
+" Time out on key codes but not mappings. Makes terminal Vim work sanely
+set notimeout
+set ttimeout
+set ttimeoutlen=100
+
+"" Whitespace
+set nowrap                      " do not wrap lines
+set tabstop=4 shiftwidth=4      " a tab is four spaces (or set this to 4)
+set expandtab                   " use spaces, not tabs (optional)
+
+"" Searching
+set hlsearch                    " highlight matches
+set incsearch                   " incremental searching
+set ignorecase                  " searches are case insensitive...
+set smartcase                   " ... unless they contain at least one capital letter
+set gdefault                    " replace all matches per line (instead of just first)
+
+"" Have Vim able to edit crontab files again
+set backupskip=/tmp/*,/private/tmp/*"
+
+"" Status line
+set showcmd                     " display incomplete commands
+
+if has("statusline") && !&cp
+  set laststatus=2              " always show the status bar
+  set statusline=%f\ %m\ %r     " filename, modified, readonly
+  set statusline+=\ %l/%L[%p%%] " current line/total lines
+  set statusline+=\ %v[0x%B]    " current column [hex char]
+endif
+' > $HOME/.vimrc
 
 # Provision vhosts
 # You can add more by copy pasting and editing to your needs
