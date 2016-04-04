@@ -4,7 +4,19 @@ sudo apt-get update
 # Install and configure packages
 sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
 sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
-sudo apt-get install -y php5 apache2 libapache2-mod-php5 php5-curl php5-gd php5-mcrypt php5-readline mysql-server-5.6 php5-mysql git-core php5-xdebug
+sudo apt-get install -y make gcc build-essential php5 apache2 libapache2-mod-php5 php5-curl php5-gd php5-mcrypt php5-readline mysql-server-5.6 php5-mysql git-core php5-xdebug tcl8.5 php5-redis
+
+# Install local instance of redis
+wget http://download.redis.io/releases/redis-2.8.24.tar.gz
+tar xzf redis-2.8.24.tar.gz
+sudo mv redis-2.8.24 /etc/redis
+cd /etc/redis
+sudo make
+sudo make install
+cd utils
+sudo ./install_server.sh
+
+cd # Return to home dir
 
 # Configure xdebug
 cat << EOF | sudo tee -a /etc/php5/mods-available/xdebug.ini
