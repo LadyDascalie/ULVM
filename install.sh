@@ -19,6 +19,21 @@ EOF
 sed -i "s/error_reporting = .*/error_reporting = E_ALL/" /etc/php5/apache2/php.ini
 sed -i "s/display_errors = .*/display_errors = On/" /etc/php5/apache2/php.ini
 sed -i "s/disable_functions = .*/disable_functions = /" /etc/php5/cli/php.ini
+# Enable the php.ini mods necessary for debugging
+echo '' >> /etc/php5/apache2/php.ini
+echo ';;;;;;;;;;;;;;;;;;;;;;;;;;' >> /etc/php5/apache2/php.ini
+echo '; Added to enable Xdebug ;' >> /etc/php5/apache2/php.ini
+echo ';;;;;;;;;;;;;;;;;;;;;;;;;;' >> /etc/php5/apache2/php.ini
+echo '' >> /etc/php5/apache2/php.ini
+echo 'zend_extension="'$(find / -name 'xdebug.so' 2> /dev/null)'"' >> /etc/php5/apache2/php.ini
+echo 'xdebug.default_enable = 1' >> /etc/php5/apache2/php.ini
+echo 'xdebug.idekey = "vagrant"' >> /etc/php5/apache2/php.ini
+echo 'xdebug.remote_enable = 1' >> /etc/php5/apache2/php.ini
+echo 'xdebug.remote_autostart = 0' >> /etc/php5/apache2/php.ini
+echo 'xdebug.remote_port = 9000' >> /etc/php5/apache2/php.ini
+echo 'xdebug.remote_handler=dbgp' >> /etc/php5/apache2/php.ini
+echo 'xdebug.remote_log="/var/log/xdebug/xdebug.log"' >> /etc/php5/apache2/php.ini
+echo 'xdebug.remote_host=10.0.2.2 ; IDE-Environments IP, from vagrant box.' >> /etc/php5/apache2/php.ini
 
 # Enable mod_rewrite
 sudo a2enmod rewrite
